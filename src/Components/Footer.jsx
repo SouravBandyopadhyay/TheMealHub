@@ -50,7 +50,7 @@ import {
               <Link href={"#"}>Terms of Service</Link>
               <Link href={"#"}>Legal</Link>
               <Link href={"#"}>Privacy Policy</Link>
-              <Link href={"#"}>Satus</Link>
+              <Link href={"#"}>Status</Link>
             </Stack>
             <Stack align={"flex-start"}>
               <ListHeader>Stay up to date</ListHeader>
