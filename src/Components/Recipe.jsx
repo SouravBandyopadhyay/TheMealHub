@@ -15,7 +15,7 @@ import {
   StackDivider,
   useColorModeValue,
   List,
-  ListItem
+  ListItem,
 } from "@chakra-ui/react";
 const Recipe = () => {
   const [item, setItem] = useState({});
@@ -113,11 +113,9 @@ const Recipe = () => {
                 </Box>
               </Stack>
 
-              <Box>
-                <Link to="/meal">
-                  <Button colorScheme="purple">Back</Button>
-                </Link>
-              </Box>
+              <Button as={Link} to="/meal" colorScheme="purple">
+                BACK
+              </Button>
             </Stack>
           </SimpleGrid>
         </Container>

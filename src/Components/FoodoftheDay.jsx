@@ -53,12 +53,7 @@ const FoodoftheDay = () => {
         />
       )}{" "}
       {!loading && (
-        <Container
-          maxW={"7xl"}
-          border="2px solid #e74c3c"
-          borderRadius="lg"
-          p={4}
-        >
+        <Container maxW={"7xl"} borderRadius="lg" p={4}>
           <Heading
             lineHeight={1.1}
             fontWeight={600}
@@ -70,6 +65,7 @@ const FoodoftheDay = () => {
           <SimpleGrid
             columns={{ base: 1, md: 2 }}
             spacing={{ base: 5, md: 10 }}
+            p={2}
           >
             {/* Left Column - Image */}
             <Flex>
@@ -93,7 +89,12 @@ const FoodoftheDay = () => {
                 divider={<StackDivider borderColor="#e74c3c" />}
               >
                 <VStack spacing={{ base: 4, sm: 6 }}>
-                  <Text color="#e74c3c" fontSize={"2xl"} fontWeight={"300"}>
+                  <Text
+                    color="#e74c3c"
+                    fontSize={"2xl"}
+                    fontWeight={"300"}
+                    textTransform={"capitalize"}
+                  >
                     Category: {food.strCategory}
                   </Text>
                   {/* <Text fontSize={"1rem"}>{food.strInstructions}</Text> */}
@@ -113,16 +114,32 @@ const FoodoftheDay = () => {
 
                   <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5} w="100%">
                     <List spacing={2}>
-                      <ListItem>{food.strIngredient1}</ListItem>
-                      <ListItem>{food.strIngredient2}</ListItem>
-                      <ListItem>{food.strIngredient3}</ListItem>
-                      <ListItem>{food.strIngredient4}</ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient1}
+                      </ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient2}
+                      </ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient3}
+                      </ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient4}
+                      </ListItem>
                     </List>
                     <List spacing={2}>
-                      <ListItem>{food.strIngredient5}</ListItem>
-                      <ListItem>{food.strIngredient6}</ListItem>
-                      <ListItem>{food.strIngredient7}</ListItem>
-                      <ListItem>{food.strIngredient8}</ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient5}
+                      </ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient6}
+                      </ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient7}
+                      </ListItem>
+                      <ListItem textTransform={"capitalize"}>
+                        {food.strIngredient8}
+                      </ListItem>
                     </List>
                   </SimpleGrid>
                 </Box>
@@ -130,7 +147,7 @@ const FoodoftheDay = () => {
 
               <Box>
                 <Text color="#e74c3c" fontWeight={300} fontSize={"2xl"} p={4}>
-                  $40.00 USD
+                  Price:$40.00 USD
                 </Text>
                 <Button
                   rounded={"10px"}
