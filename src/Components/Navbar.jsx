@@ -1,13 +1,24 @@
 import { NavLink } from "react-router-dom";
-import { Box, Button, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  IconButton,
+  Stack,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
+import { CiDark, CiLight } from "react-icons/ci";
+
 const links = [
   { id: "1", title: "Home", path: "/" },
   { id: "2", title: "Meal", path: "/meal" },
   { id: "3", title: "Food Of the Day", path: "/fod" },
-  { id: "4", title: "About", path: "/about" }
+  { id: "4", title: "About", path: "/about" },
 ];
 
 function Navbar() {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <div>
       <Stack
@@ -17,9 +28,9 @@ function Navbar() {
         justifyContent="space-around"
       >
         <Box>
-          <Text as="h1" fontSize={["24px", "36px", "42px"]}>
+          <Heading as="h1" fontSize={["24px", "36px", "42px"]}>
             TheMealHub
-          </Text>
+          </Heading>
         </Box>
         <Box fontSize={["22px", "25px", "32px"]}>
           {links.map((link) => (
@@ -33,6 +44,10 @@ function Navbar() {
               </Button>
             </NavLink>
           ))}
+          <IconButton
+            onClick={toggleColorMode}
+            icon={colorMode === "light" ? <CiLight /> : <CiDark />}
+          />
         </Box>
       </Stack>
     </div>

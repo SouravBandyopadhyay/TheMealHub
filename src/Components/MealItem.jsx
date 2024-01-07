@@ -43,6 +43,7 @@ import {
     const bg_mainbox = useColorModeValue("white", "gray.800");
     return (
       <Stack
+     
         direction="row"
         justifyContent="space-evenly"
         display="grid"

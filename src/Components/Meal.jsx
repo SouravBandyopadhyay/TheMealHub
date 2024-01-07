@@ -36,7 +36,7 @@ import {
     };
     return (
       <>
-        <Box w="50%" margin="auto" p={4}>
+        <Box w="50%" margin="auto" p={4} >
           <InputGroup>
             <InputLeftElement
               size="lg"

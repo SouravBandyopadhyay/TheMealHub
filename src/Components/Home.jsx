@@ -37,15 +37,17 @@ export default function Home() {
             position={"relative"}
           >
             <Button
+              as={Link}
               colorScheme={"green"}
               bg={"green.400"}
               rounded={"full"}
               px={6}
+              to={"/meal"}
               _hover={{
                 bg: "green.500",
               }}
             >
-              <Link to="/meal">Get Started</Link>
+              Get Started
             </Button>
           </Stack>
         </Stack>

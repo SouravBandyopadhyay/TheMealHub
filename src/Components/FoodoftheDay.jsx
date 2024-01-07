@@ -17,36 +17,33 @@ import {
   VisuallyHidden,
   List,
   ListItem,
-  Spinner
+  Spinner,
 } from "@chakra-ui/react";
+import RecipeInstructions from "./RecipeInstructions";
 
 const FoodoftheDay = () => {
   const [food, setFood] = useState({});
   const [loading, setLoading] = useState(true);
-  const bg_list_ing = useColorModeValue("yellow.500", "yellow.300");
-  const bg_category = useColorModeValue("gray.500", "gray.400");
-  const bg_border_color = useColorModeValue("gray.200", "gray.600");
-  const bg_dollar = useColorModeValue("gray.900", "gray.400");
-  const bg_btn_colar = useColorModeValue("gray.900", "gray.50");
-  const bg_btn_colar_2 = useColorModeValue("white", "gray.900");
-
   const getFood = () => {
     axios
       .get("https://www.themealdb.com/api/json/v1/1/random.php")
       .then((res) => {
         console.log(res.data.meals[0]);
         setFood(res.data.meals[0]);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching food:", error);
+        setLoading(false);
       });
   };
+
   useEffect(() => {
-    setTimeout(() => {
-      getFood();
-      setLoading(false);
-    }, 1000);
+    getFood();
   }, []);
   return (
     <>
-      {loading ? (
+      {loading && (
         <Spinner
           thickness="4px"
           speed="0.65s"
@@ -54,54 +51,59 @@ const FoodoftheDay = () => {
           color="whatsapp.500"
           size="xl"
         />
-      ) : (
-        <Container maxW={"7xl"}>
-          <SimpleGrid
-            columns={{ base: 1, lg: 1 }}
-            spacing={{ base: 5, md: 10 }}
-            py={{ base: 18, md: 24 }}
+      )}{" "}
+      {!loading && (
+        <Container
+          maxW={"7xl"}
+          border="2px solid #e74c3c"
+          borderRadius="lg"
+          p={4}
+        >
+          <Heading
+            lineHeight={1.1}
+            fontWeight={600}
+            fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
           >
+            {food.strMeal}
+          </Heading>
+
+          <SimpleGrid
+            columns={{ base: 1, md: 2 }}
+            spacing={{ base: 5, md: 10 }}
+          >
+            {/* Left Column - Image */}
             <Flex>
               <Image
                 rounded={"md"}
-                alt={"product image"}
+                alt={"food image"}
                 src={food.strMealThumb}
                 fit={"cover"}
                 align={"center"}
                 margin="auto"
-                w={"50%"}
+                w={"100%"}
                 h={{ base: "100%", sm: "400px", lg: "500px" }}
               />
             </Flex>
-            <Stack spacing={{ base: 6, md: 10 }}>
-              <Box as={"header"}>
-                <Heading
-                  lineHeight={1.1}
-                  fontWeight={600}
-                  fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
-                >
-                  {food.strMeal}
-                </Heading>
-                <Text color={bg_dollar} fontWeight={300} fontSize={"2xl"} p={4}>
-                  $40.00 USD
-                </Text>
-              </Box>
 
+            {/* Right Column - Recipe Details */}
+            <Stack spacing={{ base: 6, md: 10 }}>
               <Stack
                 spacing={{ base: 4, sm: 6 }}
                 direction={"column"}
-                divider={<StackDivider borderColor={bg_border_color} />}
+                divider={<StackDivider borderColor="#e74c3c" />}
               >
                 <VStack spacing={{ base: 4, sm: 6 }}>
-                  <Text color={bg_category} fontSize={"2xl"} fontWeight={"300"}>
-                    Category:{food.strCategory}
+                  <Text color="#e74c3c" fontSize={"2xl"} fontWeight={"300"}>
+                    Category: {food.strCategory}
                   </Text>
-                  <Text fontSize={"1rem"}> {food.strInstructions}</Text>
+                  {/* <Text fontSize={"1rem"}>{food.strInstructions}</Text> */}
+                  <RecipeInstructions instructions={food.strInstructions} />
                 </VStack>
+
                 <Box>
                   <Text
                     fontSize={{ base: "16px", lg: "18px" }}
-                    color={bg_list_ing}
+                    color="#e74c3c"
                     fontWeight={"500"}
                     textTransform={"uppercase"}
                     mb={"4"}
@@ -109,16 +111,10 @@ const FoodoftheDay = () => {
                     List Of Ingredients
                   </Text>
 
-                  <SimpleGrid
-                    columns={{ base: 1, md: 2 }}
-                    spacing={5}
-                    textTransform="capitalize"
-                    w="50%"
-                    margin="auto"
-                  >
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5} w="100%">
                     <List spacing={2}>
                       <ListItem>{food.strIngredient1}</ListItem>
-                      <ListItem>{food.strIngredient2}</ListItem>{" "}
+                      <ListItem>{food.strIngredient2}</ListItem>
                       <ListItem>{food.strIngredient3}</ListItem>
                       <ListItem>{food.strIngredient4}</ListItem>
                     </List>
@@ -133,23 +129,25 @@ const FoodoftheDay = () => {
               </Stack>
 
               <Box>
+                <Text color="#e74c3c" fontWeight={300} fontSize={"2xl"} p={4}>
+                  $40.00 USD
+                </Text>
                 <Button
                   rounded={"10px"}
-                  w={"-moz-max-content"}
                   mt={8}
                   size={"md"}
                   py={"7"}
-                  bg={bg_btn_colar}
-                  color={bg_btn_colar_2}
+                  bg="#e74c3c"
+                  color="#fff"
                   textTransform={"uppercase"}
                   margin="auto"
                   _hover={{
                     transform: "translateY(-5px)",
-                    boxShadow: "lg"
+                    boxShadow: "lg",
                   }}
                   onClick={() => getFood()}
                 >
-                  Generate Random food
+                  Generate Another Recipe
                 </Button>
               </Box>
             </Stack>

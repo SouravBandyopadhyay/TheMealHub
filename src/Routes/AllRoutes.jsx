@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import FoodOftheDay from "./FoodoftheDay";
-import Recipe from "./Recipe";
-import Meal from "./Meal";
-import Home from "./Home";
-import About from "./About";
+import FoodOftheDay from "../Components/FoodoftheDay";
+import Recipe from "../Components/Recipe";
+import Meal from "../Components/Meal";
+import Home from "../Components/Home";
+import About from "../Components/About";
 function AllRoutes() {
   return (
     <Routes>
