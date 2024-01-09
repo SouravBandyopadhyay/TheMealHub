@@ -13,6 +13,7 @@ import { FaSearch } from "react-icons/fa";
 import MealItem from "./MealItem";
 import RecipeIndex from "./RecipeIndex";
 import { useDebounce } from "use-debounce";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const Meal = () => {
   const [search, setSearch] = useState("");
@@ -28,7 +29,7 @@ const Meal = () => {
   const getAllMeals = () => {
     axios.get(url).then((res) => {
       setItem(res.data.meals);
-      console.log(res.data.meals)
+      console.log(res.data.meals);
       setShow(true);
     });
   };
@@ -77,6 +78,7 @@ const Meal = () => {
           />
         )}
         <Show above="lg">
+          <ScrollToTopButton />
           <Stack
             direction="row"
             spacing={1}
