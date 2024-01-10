@@ -14,7 +14,9 @@ React, JavaScript, Html, CSS, Chakra-UI
 - Fetching API for displaying the data.
 - Meal Item is sorted in Alphabetical Order.
 - Food of the Day section is provided where Random special food is give.
-- Searching Functionality is also provided.
+- Searching Functionality is also provided with certain Delay.
+- Pagination Added in Meal Page
+- Light And Dark Mode  
 
 
 ## Installation
