@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, List, ListItem, OrderedList, Text } from "@chakra-ui/react";
+import { Box,  ListItem, OrderedList, Text } from "@chakra-ui/react";
 
 const RecipeInstructions = ({ instructions }) => {
   // Parse the instructions into an array of steps

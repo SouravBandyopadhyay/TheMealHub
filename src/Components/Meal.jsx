@@ -8,7 +8,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import MealItem from "./MealItem";
 import RecipeIndex from "./RecipeIndex";
@@ -26,17 +26,18 @@ const Meal = () => {
   // Add debounce to the search term
   const [debouncedSearchTerm] = useDebounce(search, 1000);
 
-  const getAllMeals = () => {
+  const getAllMeals = useCallback(() => {
     axios.get(url).then((res) => {
       setItem(res.data.meals);
-      console.log(res.data.meals);
       setShow(true);
     });
-  };
-
+  }, [url, setItem, setShow]);
+  
   useEffect(() => {
-    getAllMeals(url);
-  }, [url]);
+    getAllMeals();
+  }, [getAllMeals]);
+  
+  
 
   useEffect(() => {
     // Update the URL when the debounced search term changes
