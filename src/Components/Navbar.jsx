@@ -5,7 +5,6 @@ import {
   Heading,
   IconButton,
   Stack,
-  Text,
   useColorMode,
 } from "@chakra-ui/react";
 import { CiDark, CiLight } from "react-icons/ci";

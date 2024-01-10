@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   Box,
-  chakra,
   Container,
   Stack,
   Text,
@@ -13,8 +12,6 @@ import {
   Heading,
   SimpleGrid,
   StackDivider,
-  useColorModeValue,
-  VisuallyHidden,
   List,
   ListItem,
   Spinner,
